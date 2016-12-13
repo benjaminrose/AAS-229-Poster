@@ -1,0 +1,250 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LaTeX poster template
+% Created by Nathaniel Johnston
+% August 2009
+% http://www.nathanieljohnston.com/2009/08/latex-poster-template/
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[final]{beamer}
+\usepackage[scale=1.24]{beamerposter}
+\usepackage{graphicx}           % allows us to import images
+\usepackage{sidecap}
+\usepackage{wrapfig}
+\usepackage{caption}
+\usepackage{sidecap}
+\usepackage{cleveref} %add option [capitalize]?
+\usepackage{subfig}
+% \usepackage{natbib}
+
+
+%-----------------------------------------------------------
+% Define the column width and poster size
+% To set effective sepwid, onecolwid and twocolwid values, first choose how many columns you want and how much separation you want between columns
+% The separation I chose is 0.024 and I want 4 columns
+% Then set onecolwid to be (1-(4+1)*0.024)/4 = 0.22
+% Set twocolwid to be 2*onecolwid + sepwid = 0.464
+%-----------------------------------------------------------
+
+\newlength{\sepwid}
+\newlength{\onecolwid}
+\newlength{\twocolwid}
+\newlength{\threecolwid}
+
+\setlength{\paperwidth}{44in}%{48in}
+\setlength{\paperheight}{33in}%{36in}
+\setlength{\sepwid}{0.024\paperwidth}%should be 0.024
+\setlength{\onecolwid}{0.22\paperwidth}%should be 0.22
+\setlength{\twocolwid}{0.464\paperwidth}%should be 0.464
+\setlength{\threecolwid}{0.708\paperwidth}
+\setlength{\topmargin}{-0.5in}
+\usetheme{confposter}
+\usepackage{exscale}
+
+%-----------------------------------------------------------
+% The next part fixes a problem with figure numbering. Thanks Nishan!
+% When including a figure in your poster, be sure that the commands are typed in the following order:
+% \begin{figure}
+% \includegraphics[...]{...}
+% \caption{...}
+% \end{figure}
+% That is, put the \caption after the \includegraphics
+%-----------------------------------------------------------
+
+\usecaptiontemplate{
+\small
+\structure{\insertcaptionname~\insertcaptionnumber:}
+\insertcaption}
+
+%-----------------------------------------------------------
+% Define colours (see beamerthemeconfposter.sty to change these colour definitions)
+%-----------------------------------------------------------
+
+\setbeamercolor{block title}{fg=dblue,bg=white}
+\setbeamercolor{block body}{fg=black,bg=white}
+\setbeamercolor{block alerted title}{fg=white,bg=dblue!70}
+\setbeamercolor{block alerted body}{fg=black,bg=dblue!10}
+
+\setbeamercolor{item}{fg=dblue}
+\setbeamercolor{item projected}{fg=white,bg=dblue}
+
+%-----------------------------------------------------------
+% Name and authors of poster/paper/research
+%-----------------------------------------------------------
+
+\title{Correlations Between Hubble Residuals and Local Stellar Populations\\of Type Ia Supernovae} 
+\author{Benjamin Rose \& Peter Garnavich}
+\institute{Department of Physics, University of Notre Dame, Notre Dame, IN 46556\\ \vskip1ex brose3@nd.edu}
+
+%-----------------------------------------------------------
+% Start the poster itself
+%-----------------------------------------------------------
+
+\begin{document}
+\begin{frame}[t]
+\begin{columns}[t]
+
+\begin{column}{\sepwid}\end{column}
+
+\begin{column}{\onecolwid} \label{col1}
+\begin{alertblock}{The Big Question}
+% What information about Type Ia supernovae will allow us to reduce the scatter on the Hubble diagram?\\
+% For Type Ia supernovae to be standard candles their variabilities need to be understood and corrected. 
+% In order to improve distance measurements, how can Type Ia supernovae variabilities be better understood and the scatter on the Hubble diagram reduced?
+Can using information on the local environment reduce Type Ia systematic
+distance errors?
+\end{alertblock}
+
+% \vskip1ex
+%todo:emphaize luminosity-decline rate, color, $x_1$, host galaxy mass, global mentality, and local H$_\alpha$
+% \begin{block}{Basic SNIa standardization}
+% 
+% \end{block}
+
+\vskip1ex
+
+\begin{block}{Environmental effects}
+Type Ia supernovae are excellent distance indicators, but their Hubble residuals show some correlation with host galaxy properties. 
+% Type Ia supernovae (SNIa) are used as a standard candle to measure cosmological distances. 
+Each individual SNIa has some variability, but these can be standardized by finding relationships between properties of the SNIa themselves. The two most popular light curve fitters take these relationships into account like luminosity-decline rate \cite{Phillips93}, color, and $x_1$.
+Research over the past several years is indicating that external variables seem to also contribute to SNIa variability. There are still uncertainties about how the host galaxy and the local environment influence the luminosity, color, and Hubble residuals of SNIa. 
+%These global trends have been researched including metallicity \cite{Hayden13}, and host mass \cite{Childress13}. Other?
+%2013ge is one of three from Childress that year.
+%Local effects have also been lookedAnd something else about local effect, $H_\alpha$ x2 \cite{Rigault13,Rigault14}. 
+There has been research that show the effects of host galaxy mass \cite{Childress13}, global metallicity \cite{Hayden13}, and local H$_\alpha$ \cite{Rigault13,Rigault14}.
+
+% \vskip1ex
+% \begin{itemize}
+%     \item global metallicity \cite{Hayden13}
+%     \item host galaxy mass (mass step) \cite{Childress13}
+%     \item local H$_\alpha$ x2 \cite{Rigault13,Rigault14}
+% \end{itemize}
+% \vskip1ex
+\end{block}
+
+\vskip1ex
+
+\begin{block}{Data collection}
+
+\begin{itemize}
+    \item SN Ia selection and parameters by Campbell (spectroscopic and photometrically classified)
+    \item Local enviorment {\it ugriz} form Holtzman Scene Modeling Photometry (SMP)
+    \item Local stellar population model from Conroy's Flexible Stellar Population Synthesis (FSPS) and Dan Foreman-Mackey's pyFSPS
+\end{itemize}
+
+\end{block}
+\end{column}
+
+
+\begin{column}{\sepwid}\end{column}\label{leftspace}
+
+
+\begin{column}{\twocolwid}\label{col2}
+\begin{block}{Analysis}
+Lorium Ipsum
+
+something about a table, \cref{tab:fsps-param}.
+
+\end{block}
+
+\begin{columns}
+\begin{column}{\onecolwid}
+\begin{block}{Selecting Models}
+\end{block}
+
+\begin{block}{Fitting Models}
+\end{block}
+\end{column}
+
+\begin{column}{\sepwid}\end{column}\label{centerspace}
+
+\begin{column}{\onecolwid}
+
+\begin{table}[]
+    \centering
+    \begin{tabular}{c c}
+    \hline
+    \hline
+     FSPS Parameters    & Grid Values \\
+    \hline
+     log[Z/Z_{\odot}]    & -0.88, -0.59, -0.39, -0.20, 0, 0.20 \\
+     \tau_{\text{something}} & numbers \\
+    \hline
+    \end{tabular}
+    \caption{FSPS Model Grid Parameters}
+    \label{tab:fsps-param}
+\end{table}
+
+\begin{block}{Local Properties\\Compared to HR}
+Lorium Ipsum
+\end{block}
+\end{column}
+\end{columns}
+
+\begin{alertblock}{Why HST?}
+Lorium Ipsum
+\end{alertblock}
+\end{column}
+
+
+\begin{column}{\sepwid}\end{column}\label{rightspace}
+
+
+\begin{column}{\onecolwid}\label{col3}
+\begin{alertblock}{Why HST?}
+Lorium Ipsum
+\end{alertblock}
+
+\vskip1ex
+
+\begin{block}{What is next}
+Lorium Ipsum
+\end{block}
+
+\vskip1ex
+
+\begin{block}{References} 
+% \bibliographystyle{apj}
+%using small, but could also use footnotesize, but other sizes are too small.
+\small{\begin{thebibliography}{99}
+\bibitem{Childress13}Childress, Aldering, Antilogus, et al. 2013, ApJ, 770, 108
+%I may want another 
+\bibitem{Hayden13}Hayden, Gupta, Garnavich, et al. 2013, ApJ, 764, 191
+\bibitem{Phillips93}Phillips, M. M. 1993, ApJ, L105, 413
+\bibitem{Rigault13} Rigault, Copin, Aldering, et al. 2013, A\&A, 560, A66
+\bibitem{Rigault14} Rigault, Aldering, Kowalski, et al. 2015, ApJ, 802, 20 
+\end{thebibliography}}
+\end{block}
+
+\vskip1ex
+
+\begin{block}{Acknowledgments} 
+%using small, but could also use footnotesize, but other sizes are too small.
+\small{
+% {\bf NEED TO ADD GSU \& GPS FUNDING!} \\
+Funding in part by 
+% NASA grant HST-GO-129, 
+the Notebaert Professional Development Fund, and ND Graduate Student Union CPG.
+
+{\it Software:} Astropy (Astropy Collaboration, 2013), Numpy, Pandas, Matplotlib, Seaborn, FSPS, Python-FSPS, and ?emcee}
+% \vskip1ex
+\begin{center}
+% \begin{tabular}{cc}
+%     \vspace{53pt} 
+%     \includegraphics[width = 4.5in]{ND_mark_black.pdf} &%$~~~~$&
+%     % \vspace{-210pt}
+%     \includegraphics[width = 4.5in]{astropy_powered.png}
+% \end{tabular}
+
+\includegraphics[width = 5.5in]{ND_mark_black.pdf}
+\\ \vskip1ex
+$~~~$\includegraphics[width = 5.5in]{astropy_powered.png}
+
+\end{center}
+\end{block}
+\end{column}
+
+\begin{column}{\sepwid}\end{column}
+
+\end{columns}
+\end{frame}
+\end{document}
