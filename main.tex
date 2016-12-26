@@ -71,7 +71,10 @@
 % Name and authors of poster/paper/research
 %-----------------------------------------------------------
 
-\title{Correlations Between Hubble Residuals and Local Stellar Populations\\of Type Ia Supernovae} 
+\newcommand{\sn}{SNIa}
+
+\title{Correlations Between Hubble Residuals and\\\vskip1ex Local Stellar Populations 
+of Type Ia Supernovae} 
 \author{Benjamin Rose \& Peter Garnavich}
 \institute{Department of Physics, University of Notre Dame, Notre Dame, IN 46556\\ \vskip1ex brose3@nd.edu}
 
@@ -91,7 +94,7 @@
 % For Type Ia supernovae to be standard candles their variabilities need to be understood and corrected. 
 % In order to improve distance measurements, how can Type Ia supernovae variabilities be better understood and the scatter on the Hubble diagram reduced?
 Can using information on the local environment reduce Type Ia systematic
-distance errors?
+distance uncertainties?
 \end{alertblock}
 
 % \vskip1ex
@@ -103,14 +106,14 @@ distance errors?
 \vskip1ex
 
 \begin{block}{Environmental effects}
-Type Ia supernovae are excellent distance indicators, but their Hubble residuals show some correlation with host galaxy properties. 
+Type Ia supernovae (\sn{}) are excellent distance indicators, but their Hubble residuals show some correlation with host galaxy properties. 
 % Type Ia supernovae (SNIa) are used as a standard candle to measure cosmological distances. 
-Each individual SNIa has some variability, but these can be standardized by finding relationships between properties of the SNIa themselves. The two most popular light curve fitters take these relationships into account like luminosity-decline rate \cite{Phillips93}, color, and $x_1$.
-Research over the past several years is indicating that external variables seem to also contribute to SNIa variability. There are still uncertainties about how the host galaxy and the local environment influence the luminosity, color, and Hubble residuals of SNIa. 
+Each individual \sn{} has some variability, but these can be standardized. The two most popular light curve fitters take into account relationships like luminosity-decline rate \cite{Phillips93} and \sn{} color.
+Research over the past several years is indicating that external variables seem to also contribute to \sn{} variability. There are still uncertainties about how the host galaxy and the local environment influence the luminosity, color, and Hubble residuals of \sn{}. 
 %These global trends have been researched including metallicity \cite{Hayden13}, and host mass \cite{Childress13}. Other?
 %2013ge is one of three from Childress that year.
 %Local effects have also been lookedAnd something else about local effect, $H_\alpha$ x2 \cite{Rigault13,Rigault14}. 
-There has been research that show the effects of host galaxy mass \cite{Childress13}, global metallicity \cite{Hayden13}, and local H$_\alpha$ \cite{Rigault13,Rigault14}.
+There has been research that show the effects of host galaxy mass \cite{Childress13}, global metallicity \cite{Hayden13}, and local H$_\alpha$ \cite{Rigault13}%Rigault14}.
 
 % \vskip1ex
 % \begin{itemize}
@@ -126,9 +129,9 @@ There has been research that show the effects of host galaxy mass \cite{Childres
 \begin{block}{Data collection}
 
 \begin{itemize}
-    \item SN Ia selection and parameters by Campbell (spectroscopic and photometrically classified)
-    \item Local enviorment {\it ugriz} form Holtzman Scene Modeling Photometry (SMP)
-    \item Local stellar population model from Conroy's Flexible Stellar Population Synthesis (FSPS) and Dan Foreman-Mackey's pyFSPS
+    \item \sn{} selection and parameters by Campbell (spectroscopic and photometrically) \cite{Campbell13}
+    \item Local enviorment {\it ugriz} form Holtzman Scene Modeling Photometry (SMP) \cite{Holtzman08}
+    \item Local stellar population model from Conroy's Flexible Stellar Population Synthesis (FSPS, \cite{FSPS1, FSPS2}) and Foreman-Mackey's pyFSPS \cite{pyFSPS}
 \end{itemize}
 
 \end{block}
@@ -140,24 +143,35 @@ There has been research that show the effects of host galaxy mass \cite{Childres
 
 \begin{column}{\twocolwid}\label{col2}
 \begin{block}{Analysis}
-Lorium Ipsum
-
-something about a table, \cref{tab:fsps-param}.
-
+This analysis follows the work of Gupta \cite{Gupta11} but rather then using the \textit{ugriz} of the host from DR7 Stripe 82 co-added catalog we use the local values at the \sn{} from Holtzman.
 \end{block}
+
+\vskip1ex
 
 \begin{columns}
 \begin{column}{\onecolwid}
-\begin{block}{Selecting Models}
+\begin{block}{Model Parameters}
+% This talks about why I chose the model space I did. 
+
+The local stellar population is modeled by a four parameter ``$\tau$-model'', where $\text{SFR} \propto e^{-t/\tau_{\text{SF}}}$. 
+\vskip1ex
+
+\begin{itemize}
+    \item $\tau_{\text{SF}}$ -- the e-folding timescale of star formation
+    \item $t_{\text{SF start}}$ -- when the star formation turns on
+    \item $\log(Z/Z_{\odot}$) -- the metalicity of the local stellar population
+    \item $\tau_{\text{dust}}$ -- the optical depth of the dust around starts older then $7~\text{Gyr}$ younger stars have 3 times the optical depth
+\end{itemize}
+% Where $\tau_{\text{SF}}$ is the e-folding timescale. This star formation turns on at $t_{\text{SF start}}$. 
+
+\vskip1ex
+
+% This model also contains changing metalicity and  talk about dust model.
+
+Details about the values for each parameter are available in table, \Cref{tab:fsps-param}.
 \end{block}
 
-\begin{block}{Fitting Models}
-\end{block}
-\end{column}
-
-\begin{column}{\sepwid}\end{column}\label{centerspace}
-
-\begin{column}{\onecolwid}
+\vskip1ex
 
 \begin{table}[]
     \centering
@@ -166,19 +180,38 @@ something about a table, \cref{tab:fsps-param}.
     \hline
      FSPS Parameters    & Grid Values \\
     \hline
-     log[Z/Z_{\odot}]    & -0.88, -0.59, -0.39, -0.20, 0, 0.20 \\
-     \tau_{\text{something}} & numbers \\
+     $\tau_{\text{SF}}$ [Gyr] & 0.1, 0.5, 1, 2, 3, 4, 6, 8, 10 \\
+     $t_{\text{SF start}}$ [Gyr] & 0, 1, 2, 3, 4, 5, 6, 7 \\
+     $\log(Z/Z_{\odot}$)    & -0.88, -0.59, -0.39, -0.20, 0, 0.20 \\
+     $\tau_{\text{dust}}$ & 0, 0.1, 0.3, 0.5, 1.0, 1.5 \\
     \hline
     \end{tabular}
     \caption{FSPS Model Grid Parameters}
     \label{tab:fsps-param}
 \end{table}
 
+Look we can create a diverse model space.
+
+\end{column}
+
+\begin{column}{\sepwid}\end{column}\label{centerspace}
+
+\begin{column}{\onecolwid}
+
+\begin{block}{Fitting Models}
+Selecting "Best-fit"
+Calculating Age.
+\end{block}
+
+\vskip1ex
+
 \begin{block}{Local Properties\\Compared to HR}
 Lorium Ipsum
 \end{block}
 \end{column}
 \end{columns}
+
+\vskip1ex
 
 \begin{alertblock}{Why HST?}
 Lorium Ipsum
@@ -205,13 +238,20 @@ Lorium Ipsum
 \begin{block}{References} 
 % \bibliographystyle{apj}
 %using small, but could also use footnotesize, but other sizes are too small.
-\small{\begin{thebibliography}{99}
+\footnotesize{\begin{thebibliography}{99}
+\bibitem{Phillips93}Phillips, M. M. 1993, ApJ, L105, 413
 \bibitem{Childress13}Childress, Aldering, Antilogus, et al. 2013, ApJ, 770, 108
 %I may want another 
 \bibitem{Hayden13}Hayden, Gupta, Garnavich, et al. 2013, ApJ, 764, 191
-\bibitem{Phillips93}Phillips, M. M. 1993, ApJ, L105, 413
 \bibitem{Rigault13} Rigault, Copin, Aldering, et al. 2013, A\&A, 560, A66
-\bibitem{Rigault14} Rigault, Aldering, Kowalski, et al. 2015, ApJ, 802, 20 
+\bibitem{Gupta11} Gupta, D'Andrea, Sako, et al. 2011. ApJ, 740, 92
+\bibitem{Campbell13} Campbell, D'Andrea, Nichol, et al. 2013. ApJ, 763, 88
+\bibitem{Holtzman08} Holtzman, Marriner, Kessler, et al. 2008, AJ, 136, 2306
+\bibitem{FSPS1} Conroy, Gunn, \& White 2009, ApJ, 699, 486
+\bibitem{FSPS2} Conroy \& Gunn 2010, ApJ, 712, 833
+\bibitem{pyFSPS} Foreman-Mackey, Sick, \& Johnson 2014. \url{http://doi.org/10.5281/zenodo.12157}
+% \bibitem{astorpy} Astropy Collaboration, 2013
+% \bibitem{Rigault14} Rigault, Aldering, Kowalski, et al. 2015, ApJ, 802, 20 
 \end{thebibliography}}
 \end{block}
 
@@ -219,13 +259,14 @@ Lorium Ipsum
 
 \begin{block}{Acknowledgments} 
 %using small, but could also use footnotesize, but other sizes are too small.
-\small{
+\footnotesize{
 % {\bf NEED TO ADD GSU \& GPS FUNDING!} \\
 Funding in part by 
 % NASA grant HST-GO-129, 
 the Notebaert Professional Development Fund, and ND Graduate Student Union CPG.
 
-{\it Software:} Astropy (Astropy Collaboration, 2013), Numpy, Pandas, Matplotlib, Seaborn, FSPS, Python-FSPS, and ?emcee}
+\textit{Software:} Astropy, Numpy, Pandas, Matplotlib, Seaborn, FSPS, Python-FSPS
+}
 % \vskip1ex
 \begin{center}
 % \begin{tabular}{cc}
