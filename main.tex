@@ -12,7 +12,7 @@
 % \usepackage{wrapfig}
 % \usepackage{caption}
 % \usepackage{sidecap}
-\usepackage{cleveref} %add option [capitalize]?
+\usepackage[noabbrev]{cleveref} %add option [capitalize]?
 % \usepackage{subfig}
 % \usepackage{natbib}
 
@@ -30,8 +30,8 @@
 \newlength{\twocolwid}
 \newlength{\threecolwid}
 
-\setlength{\paperwidth}{44in}%{48in}
-\setlength{\paperheight}{33in}%{36in}
+\setlength{\paperwidth}{44in}%{48in}{44in}
+\setlength{\paperheight}{35in}%{36in}{33in}
 \setlength{\sepwid}{0.024\paperwidth}%should be 0.024
 \setlength{\onecolwid}{0.22\paperwidth}%should be 0.22
 \setlength{\twocolwid}{0.464\paperwidth}%should be 0.464
@@ -76,7 +76,8 @@
 \title{Correlations Between Hubble Residuals and\\\vskip1ex Local Stellar Populations 
 of Type Ia Supernovae} 
 \author{Benjamin Rose \& Peter Garnavich}
-\institute{Department of Physics, University of Notre Dame, Notre Dame, IN 46556\\ \vskip1ex brose3@nd.edu}
+\institute{Department of Physics, University of Notre Dame, Notre Dame, IN 46556\\ \vskip1ex 
+brose3@nd.edu}% ~~~ 574.387.3453}
 
 %-----------------------------------------------------------
 % Start the poster itself
@@ -106,10 +107,10 @@ distance uncertainties?
 \vskip1ex
 
 \begin{block}{Environmental effects}
-Type Ia supernovae (\sn{}) are excellent distance indicators, but their Hubble residuals show some correlation with host galaxy properties. 
+Type Ia supernovae (\sn{}) are excellent distance indicators, but their Hubble residuals (HR) show some correlation with host galaxy properties. 
 % Type Ia supernovae (SNIa) are used as a standard candle to measure cosmological distances. 
 Each individual \sn{} has some variability, but these can be standardized. The two most popular light curve fitters take into account relationships like luminosity-decline rate \cite{Phillips93} and \sn{} color.
-Research over the past several years is indicating that external variables seem to also contribute to \sn{} variability. There are still uncertainties about how the host galaxy and the local environment influence the luminosity, color, and Hubble residuals of \sn{}. 
+Research over the past several years is indicating that external variables seem to also contribute to \sn{} variability. There are still uncertainties about how the host galaxy and the local environment influence the luminosity, color, and HR of \sn{}. 
 %These global trends have been researched including metallicity \cite{Hayden13}, and host mass \cite{Childress13}. Other?
 %2013ge is one of three from Childress that year.
 %Local effects have also been lookedAnd something else about local effect, $H_\alpha$ x2 \cite{Rigault13,Rigault14}. 
@@ -135,20 +136,24 @@ There has been research that show the effects of host galaxy mass \cite{Childres
 \end{itemize}
 
 \end{block}
+
+\begin{block}{Analysis}
+This analysis follows the work of Gupta \cite{Gupta11} but rather then using the \textit{ugriz} of the host from DR7 Stripe 82 co-added catalog we use the local values at the \sn{} from Holtzman.
+\end{block}
 \end{column}
 
 
 \begin{column}{\sepwid}\end{column}\label{leftspace}
 
 
-\begin{column}{\twocolwid}\label{col2}
-\begin{block}{Analysis}
-This analysis follows the work of Gupta \cite{Gupta11} but rather then using the \textit{ugriz} of the host from DR7 Stripe 82 co-added catalog we use the local values at the \sn{} from Holtzman.
-\end{block}
+% \begin{column}{\twocolwid}\label{col2}
+% \begin{block}{Analysis}
+% This analysis follows the work of Gupta \cite{Gupta11} but rather then using the \textit{ugriz} of the host from DR7 Stripe 82 co-added catalog we use the local values at the \sn{} from Holtzman.
+% \end{block}
 
-\vskip1ex
+% \vskip1ex
 
-\begin{columns}
+% \begin{columns}
 \begin{column}{\onecolwid}
 \begin{block}{Model Parameters}
 % This talks about why I chose the model space I did. 
@@ -185,12 +190,13 @@ The local stellar population is modeled by a four parameter ``$\tau$-model'', wh
     \label{tab:fsps-param}
 \end{table}
 
-These parameters can create a diverse model space as seen in \Cref{fig:diverse}.
+These parameters can create a diverse model space as seen in \cref{fig:diverse}.
 
 \begin{figure}
     % \centering
     % \includegraphics[width=\onecolwid*.95]{SN6057 Model Variability.pdf}
-    \includegraphics[height=6in]{SN6057-Model-Variability.pdf}
+    % \includegraphics[height=6in]{SN6057-Model-Variability.pdf}
+    \includegraphics[width=9in]{SN6057-Model-Variability.pdf}
     \caption{This shows the a the variability of models for SDSS SN6057 (SN 2005if).}
     \label{fig:diverse}
 \end{figure}
@@ -203,26 +209,43 @@ These parameters can create a diverse model space as seen in \Cref{fig:diverse}.
 \begin{column}{\onecolwid}
 
 \begin{block}{Fitting Models}
-Selecting "Best-fit"
-Calculating Age.
+The ``Best-fit'' model was selected as the one with the lowest $\chi^2$. From this, we calculate the mass weighted age via:
 \begin{equation}
-    A_{\text{mass}}= A
+    \langle A \rangle_{\text{mass}}= A_{\text{SF}} - \frac{\int^{A_{\text{SF}}}_{0}t\Psi(t)dt}{\int^{A_{\text{SF}}}_{0}\Psi(t)dt}
+\end{equation}
+Where $A_{\text{SF}}$ is the age of the universe at the given redshift minus $t_{\text{SF start}}$ and $\Psi(t)$ is the SFR as a function of time.
+
+\vskip1ex
+
+Uncertainties were calculated by taking the RMS of the neighboring (in model space) ages scaled by probability of the fit. This results in the equation:
+\begin{equation}
+    % \sigma_{\text{Age}} = \sqrt[4]{\prod_{i}^{4}\frac{\Delta \text{Age}_i}{\Delta \text{GoF}_i}}
+    \sigma_{\text{Age}_{i}} = \frac{e^{-5/2}}{e^{-\chi^2/2}} \sqrt{\langle \Delta \text{Age}_i^2\rangle}
 \end{equation}
 \end{block}
 
 \vskip1ex
 
-\begin{block}{Local Properties\\Compared to HR}
-Lorium Ipsum
+\begin{block}{Local Properties Compared to Hubble Residual}
+The HR were calecualted using Campbell's $\Lambda$CDM best fit: $\text{H}_{0}=73.8~\text{km s}^{-1}~\text{Mpc}^{-1}$, $\Omega_{\text{M}}=0.24$. The results of the HR versus local stellar population age is seen in \cref{fig:HRvAge}.
 \end{block}
-\end{column}
-\end{columns}
+
+% \begin{alertblock}{Why HST?}
+% Lorium Ipsum
+% \end{alertblock}
 
 \vskip1ex
 
-\begin{alertblock}{Why HST?}
-Lorium Ipsum
-\end{alertblock}
+\begin{block}{So What?}
+There is no visible trend between H$_0$ and local stellar age, but there is a bimodal distribution in the local age distribution.
+\end{block}
+
+\vskip1ex
+
+\begin{block}{What is next}
+Rigault finds a two mode model that at first glance does not fit my results. There also appears to be a difference between local age and global age, Gupta does not have a bimodal global age distribution. He has a mean of $\sim 4~\text{Gyr}$, in between my two peaks.
+\end{block}
+
 \end{column}
 
 
@@ -230,15 +253,15 @@ Lorium Ipsum
 
 
 \begin{column}{\onecolwid}\label{col3}
-\begin{alertblock}{Why HST?}
-Lorium Ipsum
+\begin{alertblock}{}%{Hubble Residual vs\\Local Stellar Age}
+\begin{figure}
+    \centering
+    \includegraphics[height=9in]{HRvAge.pdf}
+    % \includegraphics[height=9.5in]{HRvAge.pdf}
+    \caption{There is no correlation between Hubble Residual \cite{Campbell13} and local stellar age as calcualted via FSPS.}
+    \label{fig:HRvAge}
+\end{figure}
 \end{alertblock}
-
-\vskip1ex
-
-\begin{block}{What is next}
-Lorium Ipsum
-\end{block}
 
 \vskip1ex
 
@@ -283,9 +306,9 @@ the Notebaert Professional Development Fund, and ND Graduate Student Union CPG.
 %     \includegraphics[width = 4.5in]{astropy_powered.png}
 % \end{tabular}
 
-\includegraphics[width = 5.5in]{ND_mark_black.pdf}
+\includegraphics[width = 6.5in]{ND_mark_black.pdf}
 \\ \vskip1ex
-$~~~$\includegraphics[width = 5.5in]{astropy_powered.png}
+$~~~$\includegraphics[width = 6.5in]{astropy_powered.png}
 
 \end{center}
 \end{block}
