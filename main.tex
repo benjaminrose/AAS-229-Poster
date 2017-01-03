@@ -7,11 +7,11 @@
 
 \documentclass[final]{beamer}
 \usepackage[scale=1.24]{beamerposter}
-\usepackage{graphicx}           % allows us to import images
+\usepackage{graphicx}% allows us to import images
 % \usepackage{sidecap}
-% \usepackage{wrapfig}
-% \usepackage{caption}
 % \usepackage{sidecap}
+\usepackage{wrapfig}
+% \usepackage{caption} %removed the figure numbers for some reason?
 \usepackage[noabbrev]{cleveref} %add option [capitalize]?
 % \usepackage{subfig}
 % \usepackage{natbib}
@@ -94,7 +94,7 @@ brose3@nd.edu}% ~~~ 574.387.3453}
 % What information about Type Ia supernovae will allow us to reduce the scatter on the Hubble diagram?\\
 % For Type Ia supernovae to be standard candles their variabilities need to be understood and corrected. 
 % In order to improve distance measurements, how can Type Ia supernovae variabilities be better understood and the scatter on the Hubble diagram reduced?
-Can using information on the local environment reduce Type Ia systematic
+Can using information about the local environment reduce Type Ia systematic
 distance uncertainties?
 \end{alertblock}
 
@@ -106,7 +106,7 @@ distance uncertainties?
 
 \vskip1ex
 
-\begin{block}{Environmental effects}
+\begin{block}{Environmental Effects}
 Type Ia supernovae (\sn{}) are excellent distance indicators, but their Hubble residuals (HR) show some correlation with host galaxy properties. 
 % Type Ia supernovae (SNIa) are used as a standard candle to measure cosmological distances. 
 Each individual \sn{} has some variability, but these can be standardized. The two most popular light curve fitters take into account relationships like luminosity-decline rate \cite{Phillips93} and \sn{} color.
@@ -127,15 +127,17 @@ There has been research that show the effects of host galaxy mass \cite{Childres
 
 \vskip1ex
 
-\begin{block}{Data collection}
+\begin{block}{Data Collection}
 
 \begin{itemize}
-    \item \sn{} selection and parameters by Campbell (spectroscopic and photometrically) \cite{Campbell13}
+    \item \sn{} selection, parameters, and cosmology by Campbell (spectroscopic and photometrically classified) \cite{Campbell13}
     \item Local enviorment {\it ugriz} form Holtzman Scene Modeling Photometry (SMP) \cite{Holtzman08}
     \item Local stellar population model from Conroy's Flexible Stellar Population Synthesis (FSPS, \cite{FSPS1, FSPS2}) and Foreman-Mackey's pyFSPS \cite{pyFSPS}
 \end{itemize}
 
 \end{block}
+
+\vskip1ex
 
 \begin{block}{Analysis}
 This analysis follows the work of Gupta \cite{Gupta11} but rather then using the \textit{ugriz} of the host from DR7 Stripe 82 co-added catalog we use the local values at the \sn{} from Holtzman.
@@ -159,20 +161,20 @@ This analysis follows the work of Gupta \cite{Gupta11} but rather then using the
 % This talks about why I chose the model space I did. 
 
 The local stellar population is modeled by a four parameter ``$\tau$-model'', where $\text{SFR} \propto e^{-t/\tau_{\text{SF}}}$. 
-\vskip1ex
+
 
 \begin{itemize}
     \item $\tau_{\text{SF}}$ -- the e-folding timescale of star formation
-    \item $t_{\text{SF start}}$ -- when the star formation turns on
+    \item $t_{\text{SF}}$ -- the start time for star formation
     \item $\log(Z/Z_{\odot}$) -- the metalicity of the local stellar population
-    \item $\tau_{\text{dust}}$ -- the optical depth of the dust around starts older then $7~\text{Gyr}$ younger stars have 3 times the optical depth
+    \item $\tau_{\text{dust}}$ -- the optical depth of the dust around starts older then $7~\text{Gyr}$, younger stars have 3 times the optical depth
 \end{itemize}
 % Where $\tau_{\text{SF}}$ is the e-folding timescale. This star formation turns on at $t_{\text{SF start}}$. 
 
 % This model also contains changing metalicity and  talk about dust model.
 
 % Details about the values for each parameter are available in table, \Cref{tab:fsps-param}.
-
+\vskip-1ex
 \begin{table}[]
     \centering
     \begin{tabular}{c c}
@@ -181,7 +183,7 @@ The local stellar population is modeled by a four parameter ``$\tau$-model'', wh
      FSPS Parameters    & Grid Values \\
     \hline
      $\tau_{\text{SF}}$ [Gyr] & 0.1, 0.5, 1, 2, 3, 4, 6, 8, 10 \\
-     $t_{\text{SF start}}$ [Gyr] & 0, 1, 2, 3, 4, 5, 6, 7 \\
+     $t_{\text{SF}}$ [Gyr] & 0, 1, 2, 3, 4, 5, 6, 7 \\
      $\log(Z/Z_{\odot}$)    & -0.88, -0.59, -0.39, -0.20, 0, 0.20 \\
      $\tau_{\text{dust}}$ & 0, 0.1, 0.3, 0.5, 1.0, 1.5 \\
     \hline
@@ -190,33 +192,31 @@ The local stellar population is modeled by a four parameter ``$\tau$-model'', wh
     \label{tab:fsps-param}
 \end{table}
 
-These parameters can create a diverse model space as seen in \cref{fig:diverse}.
+% These parameters can create a diverse model space as seen in \cref{fig:diverse}.
 
 \begin{figure}
+    \begin{minipage}[c]{0.55\onecolwid}
+        \includegraphics[width=0.67\onecolwid]{SN6057-Model-Variability.pdf}
+    \end{minipage}\hfill
+    \begin{minipage}[c]{0.3\onecolwid}
+    \caption{This shows the a the variability of models for SDSS SN6057 (SN 2005if).} \label{fig:diverse}
+  \end{minipage}
     % \centering
     % \includegraphics[width=\onecolwid*.95]{SN6057 Model Variability.pdf}
-    % \includegraphics[height=6in]{SN6057-Model-Variability.pdf}
-    \includegraphics[width=9in]{SN6057-Model-Variability.pdf}
-    \caption{This shows the a the variability of models for SDSS SN6057 (SN 2005if).}
-    \label{fig:diverse}
+    % \includegraphics[height=5.5in]{SN6057-Model-Variability.pdf}
+    %% \includegraphics[height=4in]{SN6057-Model-Variability.pdf}
+    % \includegraphics[width=9in]{SN6057-Model-Variability.pdf}
+    % \caption{This shows the a the variability of models for SDSS SN6057 (SN 2005if).}
+    % \label{fig:diverse}
 \end{figure}
-
-\end{block}
-\end{column}
-
-\begin{column}{\sepwid}\end{column}\label{centerspace}
-
-\begin{column}{\onecolwid}
 
 \begin{block}{Fitting Models}
 The ``Best-fit'' model was selected as the one with the lowest $\chi^2$. From this, we calculate the mass weighted age via:
 \begin{equation}
     \langle A \rangle_{\text{mass}}= A_{\text{SF}} - \frac{\int^{A_{\text{SF}}}_{0}t\Psi(t)dt}{\int^{A_{\text{SF}}}_{0}\Psi(t)dt}
 \end{equation}
-Where $A_{\text{SF}}$ is the age of the universe at the given redshift minus $t_{\text{SF start}}$ and $\Psi(t)$ is the SFR as a function of time.
-
-\vskip1ex
-
+Where $A_{\text{SF}}$ is the age of the universe at the given redshift minus $t_{\text{SF}}$ and $\Psi(t)$ is the SFR as a function of time.
+% \vskip1ex
 Uncertainties were calculated by taking the RMS of the neighboring (in model space) ages scaled by probability of the fit. This results in the equation:
 \begin{equation}
     % \sigma_{\text{Age}} = \sqrt[4]{\prod_{i}^{4}\frac{\Delta \text{Age}_i}{\Delta \text{GoF}_i}}
@@ -224,27 +224,52 @@ Uncertainties were calculated by taking the RMS of the neighboring (in model spa
 \end{equation}
 \end{block}
 
-\vskip1ex
 
-\begin{block}{Local Properties Compared to Hubble Residual}
-The HR were calecualted using Campbell's $\Lambda$CDM best fit: $\text{H}_{0}=73.8~\text{km s}^{-1}~\text{Mpc}^{-1}$, $\Omega_{\text{M}}=0.24$. The results of the HR versus local stellar population age is seen in \cref{fig:HRvAge}.
 \end{block}
+\end{column}
 
-% \begin{alertblock}{Why HST?}
-% Lorium Ipsum
+\begin{column}{\sepwid}\end{column}\label{centerspace}
+
+\begin{column}{\onecolwid}
+% \begin{alertblock}{}%{Hubble Residual vs\\Local Stellar Age}
+% \begin{figure}
+%     \centering
+%     \includegraphics[height=9in]{HRvAge.pdf}
+%     % \includegraphics[height=9.5in]{HRvAge.pdf}
+%     \caption{There is no correlation between Hubble Residual \cite{Campbell13} and local stellar age as calcualted via FSPS.}
+%     \label{fig:HRvAge}
+% \end{figure}
 % \end{alertblock}
 
-\vskip1ex
+% \vskip1ex
 
-\begin{block}{So What?}
-There is no visible trend between H$_0$ and local stellar age, but there is a bimodal distribution in the local age distribution.
+\begin{block}{Local Properties Compared to Hubble Residual}
+The Hubble residuals were calculated using Campbell's $\Lambda$CDM best fit: $\text{H}_{0}=73.8~\text{km s}^{-1}~\text{Mpc}^{-1}$, $\Omega_{\text{m}}=0.24$. The results of the Hubble residual versus local stellar population age is seen in \cref{fig:HRvAge}.
+
+\vskip2ex
+
+\begin{figure}
+    \centering
+    \includegraphics[height=9.5in]{HRvAge.pdf}
+    % \includegraphics[height=9.5in]{HRvAge.pdf}
+    \caption{(change to vague and positive descriptions not conlusions) There is no correlation between Hubble Residual \cite{Campbell13} and local stellar age as calculated via FSPS.}
+    \label{fig:HRvAge}
+\end{figure}
+
+% \vskip1ex
+
+\begin{figure}
+    \centering
+    % \includegraphics[height=6.5in]{HR_double_hist.pdf}
+    \includegraphics[width=9.5in]{HR_double_hist.pdf}
+    \caption{Describe mean, median and std of young, old, and total population}
+    \label{fig:HR_hist}
+\end{figure}
 \end{block}
 
-\vskip1ex
-
-\begin{block}{What is next}
-Rigault finds a two mode model that at first glance does not fit my results. There also appears to be a difference between local age and global age, Gupta does not have a bimodal global age distribution. He has a mean of $\sim 4~\text{Gyr}$, in between my two peaks.
-\end{block}
+% "My thought is that the "old" population may just be dominated by background/foreground
+% stars unrelated to the supernova...but the young pop are probably associated
+% with the supernova (a prompt supernova)." -- Peter
 
 \end{column}
 
@@ -253,15 +278,22 @@ Rigault finds a two mode model that at first glance does not fit my results. The
 
 
 \begin{column}{\onecolwid}\label{col3}
-\begin{alertblock}{}%{Hubble Residual vs\\Local Stellar Age}
-\begin{figure}
-    \centering
-    \includegraphics[height=9in]{HRvAge.pdf}
-    % \includegraphics[height=9.5in]{HRvAge.pdf}
-    \caption{There is no correlation between Hubble Residual \cite{Campbell13} and local stellar age as calcualted via FSPS.}
-    \label{fig:HRvAge}
-\end{figure}
-\end{alertblock}
+
+\begin{block}{Preliminary Results}
+\begin{itemize}
+    \item The  local environments divide into two ages: a ``young'' stellar population with ages less than $4~\text{Gyr}$ and an older population.
+    \item There is no clear trend of Hubble residual with local stellar age.
+    \item The young population appears to have a non-Gaussian distribution of Hubble residual that may suggest a mix of progenitors similar to Rigault \cite{Rigault13}.
+    % \item Rigault \cite{Rigault13} finds a mix progenitor model, and at first glance my results are similar.
+    \item There appears to be a difference between local age and global age, Gupta does not have a bimodal global age distribution.%, but rather a mean of $\sim 4~\text{Gyr}$, in between my two peaks.
+\end{itemize}
+\end{block}
+
+\vskip1ex
+
+\begin{block}{What is Next}
+Investigate differences and similarities between global host parameters \cite{Gupta11} and local environment parameters, specifically age distribution. Also compare a mixed progenitor model to the model found in \cite{Rigault13}.
+\end{block}
 
 \vskip1ex
 
@@ -274,12 +306,12 @@ Rigault finds a two mode model that at first glance does not fit my results. The
 %I may want another 
 \bibitem{Hayden13}Hayden, Gupta, Garnavich, et al. 2013, ApJ, 764, 191
 \bibitem{Rigault13} Rigault, Copin, Aldering, et al. 2013, A\&A, 560, A66
-\bibitem{Gupta11} Gupta, D'Andrea, Sako, et al. 2011. ApJ, 740, 92
 \bibitem{Campbell13} Campbell, D'Andrea, Nichol, et al. 2013. ApJ, 763, 88
 \bibitem{Holtzman08} Holtzman, Marriner, Kessler, et al. 2008, AJ, 136, 2306
 \bibitem{FSPS1} Conroy, Gunn, \& White 2009, ApJ, 699, 486
 \bibitem{FSPS2} Conroy \& Gunn 2010, ApJ, 712, 833
 \bibitem{pyFSPS} Foreman-Mackey, Sick, \& Johnson 2014. \url{http://doi.org/10.5281/zenodo.12157}
+\bibitem{Gupta11} Gupta, D'Andrea, Sako, et al. 2011. ApJ, 740, 92
 % \bibitem{astorpy} Astropy Collaboration, 2013
 % \bibitem{Rigault14} Rigault, Aldering, Kowalski, et al. 2015, ApJ, 802, 20 
 \end{thebibliography}}
@@ -288,29 +320,55 @@ Rigault finds a two mode model that at first glance does not fit my results. The
 \vskip1ex
 
 \begin{block}{Acknowledgments} 
+\begin{wrapfigure}{r}{0.45\onecolwid}
+    \vspace{-33pt}
+    \begin{center}
+    \subfloat{
+        \includegraphics[width=4in]{ND_mark_black.pdf}
+    }
+    
+    \subfloat{
+        \includegraphics[width=4in]{astropy_powered.png}
+    }
+    \end{center}
+\end{wrapfigure}
 %using small, but could also use footnotesize, but other sizes are too small.
 \footnotesize{
 % {\bf NEED TO ADD GSU \& GPS FUNDING!} \\
 Funding in part by 
 % NASA grant HST-GO-129, 
 the Notebaert Professional Development Fund, and ND Graduate Student Union CPG.
-
-\textit{Software:} Astropy, Numpy, Pandas, Matplotlib, Seaborn, FSPS, Python-FSPS
+\vskip1ex
+\textit{Software:} 
+Astropy, Numpy, Pandas, \\Matplotlib, Seaborn, FSPS, Python-FSPS
 }
 % \vskip1ex
-\begin{center}
+% \begin{center}
 % \begin{tabular}{cc}
-%     \vspace{53pt} 
-%     \includegraphics[width = 4.5in]{ND_mark_black.pdf} &%$~~~~$&
+%     % \vspace{53pt} 
+%     % \vspace*{-20pt}
+%     \includegraphics[width = 4.5in]{ND_mark_black.png} &%$~~~~$&
 %     % \vspace{-210pt}
 %     \includegraphics[width = 4.5in]{astropy_powered.png}
 % \end{tabular}
 
-\includegraphics[width = 6.5in]{ND_mark_black.pdf}
-\\ \vskip1ex
-$~~~$\includegraphics[width = 6.5in]{astropy_powered.png}
+% \includegraphics[width = 4.5in]{ND_mark_black.pdf}
+% % \\ \vskip1ex
+% $~~~$\includegraphics[width = 4.5in]{astropy_powered.png}
 
-\end{center}
+% \end{center}
+
+% \begin{figure}
+%     \begin{center}
+%     % \subfloat{
+%         \includegraphics[height=0.9in]{ND_mark_black.pdf}
+%     % }
+    
+%     % \subfloat{
+%         % \includegraphics[height=0.8in]{astropy_powered.png}
+%     % }
+%     \end{center}
+% \end{figure}
 \end{block}
 \end{column}
 
