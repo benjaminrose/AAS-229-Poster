@@ -94,8 +94,8 @@ brose3@nd.edu}% ~~~ 574.387.3453}
 % What information about Type Ia supernovae will allow us to reduce the scatter on the Hubble diagram?\\
 % For Type Ia supernovae to be standard candles their variabilities need to be understood and corrected. 
 % In order to improve distance measurements, how can Type Ia supernovae variabilities be better understood and the scatter on the Hubble diagram reduced?
-Can using information about the local environment reduce Type Ia systematic
-distance uncertainties?
+Can using information about the local environment reduce systematic
+distance uncertainties in Type Ia supernovae?
 \end{alertblock}
 
 % \vskip1ex
@@ -107,10 +107,11 @@ distance uncertainties?
 \vskip1ex
 
 \begin{block}{Environmental Effects}
-Type Ia supernovae (\sn{}) are excellent distance indicators, but their Hubble residuals (HR) show some correlation with host galaxy properties. 
+Type Ia supernovae (\sn{}) are excellent distance indicators, but their Hubble residuals show some correlation with host galaxy properties. 
 % Type Ia supernovae (SNIa) are used as a standard candle to measure cosmological distances. 
-Each individual \sn{} has some variability, but these can be standardized. The two most popular light curve fitters take into account relationships like luminosity-decline rate \cite{Phillips93} and \sn{} color.
-Research over the past several years is indicating that external variables seem to also contribute to \sn{} variability. There are still uncertainties about how the host galaxy and the local environment influence the luminosity, color, and HR of \sn{}. 
+Each individual \sn{} has some variability, but these can be standardized. The two most popular light curve fitters take into account relationships like luminosity-decline rate %\cite{Phillips93}
+and \sn{} color. 
+Research over the past several years is indicating that external variables seem to also contribute to \sn{} variability. There are still uncertainties about how the host galaxy and the local environment influence the luminosity, color, and Hubble residuals of \sn{}. 
 %These global trends have been researched including metallicity \cite{Hayden13}, and host mass \cite{Childress13}. Other?
 %2013ge is one of three from Childress that year.
 %Local effects have also been lookedAnd something else about local effect, $H_\alpha$ x2 \cite{Rigault13,Rigault14}. 
@@ -130,9 +131,9 @@ There has been research that show the effects of host galaxy mass \cite{Childres
 \begin{block}{Data Collection}
 
 \begin{itemize}
-    \item \sn{} selection, parameters, and cosmology by Campbell (spectroscopic and photometrically classified) \cite{Campbell13}
-    \item Local enviorment {\it ugriz} form Holtzman Scene Modeling Photometry (SMP) \cite{Holtzman08}
-    \item Local stellar population model from Conroy's Flexible Stellar Population Synthesis (FSPS, \cite{FSPS1, FSPS2}) and Foreman-Mackey's pyFSPS \cite{pyFSPS}
+    \item \sn{} selection, parameters, and cosmology from Campbell (spectroscopic and photometrically classified) \cite{Campbell13}
+    \item Local enviorment {\it ugriz} photometry form Holtzman Scene Modeling Photometry \cite{Holtzman08}
+    \item Local stellar population model using Conroy's Flexible Stellar Population Synthesis (FSPS, \cite{FSPS1, FSPS2}) and Foreman-Mackey's pyFSPS \cite{pyFSPS}
 \end{itemize}
 
 \end{block}
@@ -140,7 +141,7 @@ There has been research that show the effects of host galaxy mass \cite{Childres
 \vskip1ex
 
 \begin{block}{Analysis}
-This analysis follows the work of Gupta \cite{Gupta11} but rather then using the \textit{ugriz} of the host from DR7 Stripe 82 co-added catalog we use the local values at the \sn{} from Holtzman.
+This analysis follows the work of Gupta \cite{Gupta11} but rather then using the \textit{ugriz} of the host from DR7 Stripe 82 co-added catalog we use the local values from Holtzman.
 \end{block}
 \end{column}
 
@@ -157,7 +158,7 @@ This analysis follows the work of Gupta \cite{Gupta11} but rather then using the
 
 % \begin{columns}
 \begin{column}{\onecolwid}
-\begin{block}{Model Parameters}
+\begin{block}{Stellar Model Parameters}
 % This talks about why I chose the model space I did. 
 
 The local stellar population is modeled by a four parameter ``$\tau$-model'', where $\text{SFR} \propto e^{-t/\tau_{\text{SF}}}$. 
@@ -198,8 +199,8 @@ The local stellar population is modeled by a four parameter ``$\tau$-model'', wh
     \begin{minipage}[c]{0.55\onecolwid}
         \includegraphics[width=0.67\onecolwid]{SN6057-Model-Variability.pdf}
     \end{minipage}\hfill
-    \begin{minipage}[c]{0.3\onecolwid}
-    \caption{This shows the a the variability of models for SDSS SN6057 (SN 2005if).} \label{fig:diverse}
+    \begin{minipage}[c]{0.35\onecolwid}
+    \caption{This figure shows the range of variability of models for SDSS SN6057 (SN 2005if).} \label{fig:diverse}
   \end{minipage}
     % \centering
     % \includegraphics[width=\onecolwid*.95]{SN6057 Model Variability.pdf}
@@ -210,8 +211,8 @@ The local stellar population is modeled by a four parameter ``$\tau$-model'', wh
     % \label{fig:diverse}
 \end{figure}
 
-\begin{block}{Fitting Models}
-The ``Best-fit'' model was selected as the one with the lowest $\chi^2$. From this, we calculate the mass weighted age via:
+\begin{block}{Calculating Local Stellar Age}
+The ``best-fit'' model was selected as the one with the lowest $\chi^2$. From this, we calculate the mass weighted age via:
 \begin{equation}
     \langle A \rangle_{\text{mass}}= A_{\text{SF}} - \frac{\int^{A_{\text{SF}}}_{0}t\Psi(t)dt}{\int^{A_{\text{SF}}}_{0}\Psi(t)dt}
 \end{equation}
@@ -246,23 +247,27 @@ Uncertainties were calculated by taking the RMS of the neighboring (in model spa
 \begin{block}{Local Properties Compared to Hubble Residual}
 The Hubble residuals were calculated using Campbell's $\Lambda$CDM best fit: $\text{H}_{0}=73.8~\text{km s}^{-1}~\text{Mpc}^{-1}$, $\Omega_{\text{m}}=0.24$. The results of the Hubble residual versus local stellar population age is seen in \cref{fig:HRvAge}.
 
-\vskip2ex
-
-\begin{figure}
-    \centering
-    \includegraphics[height=9.5in]{HRvAge.pdf}
-    % \includegraphics[height=9.5in]{HRvAge.pdf}
-    \caption{(change to vague and positive descriptions not conlusions) There is no correlation between Hubble Residual \cite{Campbell13} and local stellar age as calculated via FSPS.}
-    \label{fig:HRvAge}
-\end{figure}
-
 % \vskip1ex
 
 \begin{figure}
     \centering
+    \includegraphics[height=9in]{HRvAge.pdf}
+    % \includegraphics[height=9.5in]{HRvAge.pdf}
+    \vskip-0.75ex
+    \caption{A linear fit was performed to look for a correlation between Hubble residual and local stellar age: plotted as the blue line. Five binned points (blue) are plotted on top of the complete data set (N=420, green) to guide the eye. 
+    % The age population appears to have two clumps at $\sim2~\text{Gyr}$ and $\sim 7~\text{Gyr}$.
+    }
+    \label{fig:HRvAge}
+\end{figure}
+
+\vskip-1.75ex
+
+\begin{figure}
+    \centering
     % \includegraphics[height=6.5in]{HR_double_hist.pdf}
-    \includegraphics[width=9.5in]{HR_double_hist.pdf}
-    \caption{Describe mean, median and std of young, old, and total population}
+    \includegraphics[width=9in]{HR_double_hist.pdf}
+    \vskip-0.75ex
+    \caption{The distributions of the Hubble residuals split by age. The old population ($> 4~\text{Gyr}$) has a strong Gaussian shape. The young population ($\le 4~\text{Gyr}$) does not appear to have a Gaussian shape but rather a positive skew. The plotted Gaussian (red line) is centered at $0$ with the same $\sigma$ as the old population.}
     \label{fig:HR_hist}
 \end{figure}
 \end{block}
@@ -285,14 +290,14 @@ The Hubble residuals were calculated using Campbell's $\Lambda$CDM best fit: $\t
     \item There is no clear trend of Hubble residual with local stellar age.
     \item The young population appears to have a non-Gaussian distribution of Hubble residual that may suggest a mix of progenitors similar to Rigault \cite{Rigault13}.
     % \item Rigault \cite{Rigault13} finds a mix progenitor model, and at first glance my results are similar.
-    \item There appears to be a difference between local age and global age, Gupta does not have a bimodal global age distribution.%, but rather a mean of $\sim 4~\text{Gyr}$, in between my two peaks.
+    \item There appears to be a difference between local age and global age, Gupta \cite{Gupta11} does not have a bimodal global age distribution.%, but rather a mean of $\sim 4~\text{Gyr}$, in between my two peaks.
 \end{itemize}
 \end{block}
 
 \vskip1ex
 
 \begin{block}{What is Next}
-Investigate differences and similarities between global host parameters \cite{Gupta11} and local environment parameters, specifically age distribution. Also compare a mixed progenitor model to the model found in \cite{Rigault13}.
+Investigate differences and similarities between global host parameters and local environment parameters, specifically age distribution. Also investigate a mixed progenitor model to explain the non-Gaussian Hubble residuals of the young stellar population.
 \end{block}
 
 \vskip1ex
@@ -301,7 +306,7 @@ Investigate differences and similarities between global host parameters \cite{Gu
 % \bibliographystyle{apj}
 %using small, but could also use footnotesize, but other sizes are too small.
 \footnotesize{\begin{thebibliography}{99}
-\bibitem{Phillips93}Phillips, M. M. 1993, ApJ, L105, 413
+% \bibitem{Phillips93}Phillips, M. M. 1993, ApJ, L105, 413
 \bibitem{Childress13}Childress, Aldering, Antilogus, et al. 2013, ApJ, 770, 108
 %I may want another 
 \bibitem{Hayden13}Hayden, Gupta, Garnavich, et al. 2013, ApJ, 764, 191
@@ -317,18 +322,18 @@ Investigate differences and similarities between global host parameters \cite{Gu
 \end{thebibliography}}
 \end{block}
 
-\vskip1ex
+\vskip0.5ex
 
 \begin{block}{Acknowledgments} 
 \begin{wrapfigure}{r}{0.45\onecolwid}
     \vspace{-33pt}
     \begin{center}
     \subfloat{
-        \includegraphics[width=4in]{ND_mark_black.pdf}
+        \includegraphics[width=4.1in]{ND_mark_black.pdf}
     }
     
     \subfloat{
-        \includegraphics[width=4in]{astropy_powered.png}
+        \includegraphics[width=4.1in]{astropy_powered.png}
     }
     \end{center}
 \end{wrapfigure}
@@ -338,7 +343,7 @@ Investigate differences and similarities between global host parameters \cite{Gu
 Funding in part by 
 % NASA grant HST-GO-129, 
 the Notebaert Professional Development Fund, and ND Graduate Student Union CPG.
-\vskip1ex
+\vskip1.5ex
 \textit{Software:} 
 Astropy, Numpy, Pandas, \\Matplotlib, Seaborn, FSPS, Python-FSPS
 }
